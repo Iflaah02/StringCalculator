@@ -4,6 +4,7 @@ public class StringCalculator {
 	
 	protected String[] inputs;
 	protected ArrayList<Integer> numbers;
+	protected int result;
 	
 	StringCalculator(){
 		numbers = new ArrayList<Integer>();
@@ -44,15 +45,33 @@ public class StringCalculator {
 		return;
 	}
 	
+	protected void calculateSum() {
+		result = 0;
+		
+		for(Integer i : numbers) {
+			result += i;
+		}
+	}
 	
 	
-	public int add(String numbersStr) {
+	
+	public int add(String numbersStr) throws StringCalculatorException {
 		// Returns the sum of the numbers given in numbersStr
 		
 		// not yet implemented
+		numbers.clear();		
 		
+		setInput(numbersStr);
 		
-		return 0;
+		if(!checkInput()) {
+			throw new StringCalculatorException();
+		}
+		
+		parseNumbers();
+		
+		calculateSum();
+		
+		return result;
 	}
 	
 	

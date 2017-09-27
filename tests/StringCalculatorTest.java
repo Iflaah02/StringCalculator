@@ -8,11 +8,6 @@ import org.junit.Test;
 
 
 public class StringCalculatorTest {
-
-	@Test
-	public void test() {
-		fail("Not yet implemented");
-	}
 	
 	@Test
 	public void testSetInput_Empty() {
@@ -178,6 +173,117 @@ public class StringCalculatorTest {
 		
 		assertEquals(Arrays.asList(123,234,345), calc.numbers);
 	}
+	
+	@Test
+	public void testCalculateSum_Zero() {
+		StringCalculator calc = new StringCalculator();
+		calc.numbers.add(0);
+		
+		calc.calculateSum();
+		
+		assertEquals(calc.result, 0);
+		
+	}
+	
+	@Test
+	public void testCalculateSum_One() {
+		StringCalculator calc = new StringCalculator();
+		calc.numbers.add(1);
+		
+		calc.calculateSum();
+		
+		assertEquals(calc.result, 1);
+		
+	}
+	
+	@Test
+	public void testCalculateSum_TwoNumbers() {
+		StringCalculator calc = new StringCalculator();
+		calc.numbers.add(1);
+		calc.numbers.add(2);
+		
+		calc.calculateSum();
+		
+		assertEquals(calc.result, 3);
+		
+	}
+	
+	@Test
+	public void testCalculateSum_ThreeNumbers() {
+		StringCalculator calc = new StringCalculator();
+		calc.numbers.add(1);
+		calc.numbers.add(2);
+		calc.numbers.add(3);
+		
+		calc.calculateSum();
+		
+		assertEquals(calc.result, 6);
+		
+	}
+	
+	@Test
+	public void testCalculateSum_MultiDigit() {
+		StringCalculator calc = new StringCalculator();
+		calc.numbers.add(111);
+		calc.numbers.add(222);
+		
+		calc.calculateSum();
+		
+		assertEquals(calc.result, 333);
+		
+	}
+	
+	@Test
+	public void testAdd_Empty() throws StringCalculatorException{
+		StringCalculator calc = new StringCalculator();
+		
+		assertEquals(calc.add(""), 0);
+	}
+	
+	@Test
+	public void testAdd_OneNumber() throws StringCalculatorException{
+		StringCalculator calc = new StringCalculator();
+		
+		assertEquals(calc.add("1"), 1);
+	}
+	
+	@Test
+	public void testAdd_TwoNumbers() throws StringCalculatorException{
+		StringCalculator calc = new StringCalculator();
+		
+		assertEquals(calc.add("1,2"), 3);
+	}
+	
+	@Test
+	public void testAdd_ThreeNumbers() throws StringCalculatorException{
+		StringCalculator calc = new StringCalculator();
+		
+		assertEquals(calc.add("1,2,3"), 6);
+	}
+	
+	@Test
+	public void testAdd_MultiDigit() throws StringCalculatorException{
+		StringCalculator calc = new StringCalculator();
+		
+		assertEquals(calc.add("111,222"), 333);
+	}
+	
+	
+	@Test(expected = StringCalculatorException.class)
+	public void testAdd_Char() throws StringCalculatorException{
+		StringCalculator calc = new StringCalculator();
+		
+		assertEquals(calc.add("12,a"), 0);
+	}
+	
+	@Test(expected = StringCalculatorException.class)
+	public void testAdd_Negative() throws StringCalculatorException{
+		StringCalculator calc = new StringCalculator();
+		
+		assertEquals(calc.add("1,-2"), 0);
+	}
+	
+	
 	
 
 }
