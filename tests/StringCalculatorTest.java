@@ -50,6 +50,61 @@ public class StringCalculatorTest {
 		assertEquals(calc.inputs[2], "3");
 	}
 	
+	@Test
+	public void testCheckInput_Empty() {
+		StringCalculator calc = new StringCalculator();
+		calc.setInput("");
+		
+		assertTrue(calc.checkInput());
+	}
+	
+	@Test
+	public void testCheckInput_OneNumber() {
+		StringCalculator calc = new StringCalculator();
+		calc.setInput("1");
+		
+		assertTrue(calc.checkInput());
+	}
+	
+	@Test
+	public void testCheckInput_TwoNumbers() {
+		StringCalculator calc = new StringCalculator();
+		calc.setInput("1,2");
+		
+		assertTrue(calc.checkInput());
+	}
+	
+	@Test
+	public void testCheckInput_ThreeNumbers() {
+		StringCalculator calc = new StringCalculator();
+		calc.setInput("1,2,3");
+		
+		assertTrue(calc.checkInput());
+	}
+	
+	@Test
+	public void testCheckInput_Character() {
+		StringCalculator calc = new StringCalculator();
+		calc.setInput("1,a");
+		
+		assertFalse(calc.checkInput());
+	}
+	
+	@Test
+	public void testCheckInput_NegativeNumber() {
+		StringCalculator calc = new StringCalculator();
+		calc.setInput("1,-2");
+		
+		assertFalse(calc.checkInput());
+	}
+	
+	@Test
+	public void testCheckInput_NumberCharCombination() {
+		StringCalculator calc = new StringCalculator();
+		calc.setInput("1,2a");
+		
+		assertFalse(calc.checkInput());
+	}
 	
 
 }
