@@ -58,7 +58,6 @@ public class StringCalculator {
 	public int add(String numbersStr) throws StringCalculatorException {
 		// Returns the sum of the numbers given in numbersStr
 		
-		// not yet implemented
 		numbers.clear();		
 		
 		setInput(numbersStr);
