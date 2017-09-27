@@ -1,11 +1,11 @@
 
 public class StringCalculatorException extends Exception {
-    // Parameterless Constructor
+	//6. Add excption class
     public StringCalculatorException() {}
-
-    // Constructor that accepts a message
+    
     public StringCalculatorException(String message)
     {
        super(message);
     }
+    
 }

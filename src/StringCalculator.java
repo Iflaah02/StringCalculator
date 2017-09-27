@@ -1,20 +1,14 @@
-/* 1. The method can take 0, 1 or 2 numbers, and will return their sum (for an empty string it will 
-return 0) for example “” or “1” or “1,2” 
-2. Add method to handle an unknown amount of numbers 
-3. Add method to handle new lines between numbers (instead of commas). 
-1. the following input is ok: “1\n2,3” (will equal 6) 
-2. the following input is NOT ok: “1,\n” 
-4. Calling Add with a negative numbers or invalid input (not numbers) will throw an 
-StringCalculatorException*/
-
-//1. Method retrieving the input
-//2. Method to verify the input
-//3. Method to split the input string
-//4. Method which sums up the digits in a string
-//5. Add method to perform the calculation
 import java.util.*;
 
 public class StringCalculator {
+	
+	//1. Method retrieving the input
+	//2. Method to verify the input
+	//3. Method to split the input string
+	//4. Method which sums up the digits
+	//5. Add method to perform the calculation
+	//6. Add exception class and throw exception
+	//7. Todo: handle new lines between numbers (instead of commas)
 	
 	int sumNumbers;
 	String numberStr;
@@ -24,22 +18,10 @@ public class StringCalculator {
 		this.numberStr = null;
 	}
 	
-	
-	//4. Method which sums up the digits in a string	
-	public int add(String numbersStr) {
-		
-		try {
-				if(verificationInput(numbersStr)==false) {
-					throw new StringCalculatorException();
-				}
-		}
-		catch (StringCalculatorException e) {
-		    System.err.println("Invalid input");
-		}
-		
+	//4. Method which sums up the digits
+	public int sumDigits (ArrayList<Integer> numbers){
 		int tempSum = 0;
-	    ArrayList<Integer> numbersToAdd = splitInput(numbersStr);
-		// Returns the sum of the numbers given in numbersStr
+	    ArrayList<Integer> numbersToAdd = numbers;
 		if(numbersToAdd.isEmpty()) {
 			return 0;
 		}
@@ -50,13 +32,28 @@ public class StringCalculator {
 			return tempSum;
 		}
 	}
+	
+	//5. Add method to perform the calculation
+	public int add(String numbersStr) throws StringCalculatorException {
+
+	//Add Exception
+		if(!verificationInput(numbersStr)) {
+			throw new StringCalculatorException("Invalid Values");
+		}
+		else{
+			ArrayList<Integer> numbers = splitInput(numbersStr);
+			int addedValues = sumDigits(numbers);
+			return addedValues;				
+		}
+
+	}
 
 
 	//1. Method retrieving the input
 	
 	public String retrieveInput() {
 		
-		System.out.println("Enter you numbers which should be sumed up sperated with a \",\" : ");
+		//System.out.println("Enter you numbers which should be sumed up sperated with a \",\" : ");
 		Scanner reader = new Scanner(System.in);
 		String line = reader.nextLine();
 		return line;

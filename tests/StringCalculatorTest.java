@@ -98,6 +98,7 @@ public class StringCalculatorTest {
 		// Assert
 		assertFalse(verification);
 	}
+	
 	//3. Test Cases for method to split the input string
 	@Test
 	public void testSplitInputMultipleDigits() {
@@ -129,45 +130,90 @@ public class StringCalculatorTest {
 		// Assert
 		assertEquals(testArraylist,splittedValue);
 	}
-	//4. Method which sums up the digits in a string
+	
+	//4. Test cases for method which sums up the digits
 	@Test
-	public void testAddMultipleDigits() {
+	public void testSumMultipleDigits() {
 		// Arrange
 		StringCalculator strCalc = new StringCalculator();
-		String input = "1,2,30,4,5";
+	    ArrayList<Integer> testArraylist = new ArrayList<Integer>();
+	    testArraylist.add(1);
+	    testArraylist.add(2);
+	    testArraylist.add(30);
+	    testArraylist.add(4);
+	    testArraylist.add(5);
 		
 		// Act
-		int sumValues = strCalc.add(input);
+		int sumValues = strCalc.sumDigits(testArraylist);
 	    
 		// Assert
 		assertEquals(42,sumValues);
 	}
 	@Test
-	public void testAddOneDigit() {
+	public void testSumOneDigit() {
 		// Arrange
 		StringCalculator strCalc = new StringCalculator();
-		String input = "13";
+	    ArrayList<Integer> testArraylist = new ArrayList<Integer>();
+	    testArraylist.add(13);
 		
 		// Act
-		int sumValues = strCalc.add(input);
+		int sumValues = strCalc.sumDigits(testArraylist);
 	    
 		// Assert
 		assertEquals(13,sumValues);
 	}
 	@Test
-	public void testAddEmpty() {
+	public void testSumDigitEmpty() {
+		// Arrange
+		StringCalculator strCalc = new StringCalculator();
+		ArrayList<Integer> testArraylist = new ArrayList<Integer>();
+		
+		// Act
+		int sumValues = strCalc.sumDigits(testArraylist);
+	    
+		// Assert
+		assertEquals(0,sumValues);
+	}
+	//5.
+	@Test
+	public void testAddMultipleDigits() throws StringCalculatorException{
+		// Arrange
+		StringCalculator strCalc = new StringCalculator();
+		String input = "12,54,20,2,5,5000";
+		
+		// Act
+		int sumValues = strCalc.add(input);
+		
+		// Assert
+		assertEquals(5093,sumValues);
+	}
+	@Test
+	public void testAddOneDigits() throws StringCalculatorException{
+		// Arrange
+		StringCalculator strCalc = new StringCalculator();
+		String input = "33";
+		
+		// Act
+		int sumValues = strCalc.add(input);
+		
+		// Assert
+		assertEquals(33,sumValues);
+	}
+	public void testAddEmpty() throws StringCalculatorException{
 		// Arrange
 		StringCalculator strCalc = new StringCalculator();
 		String input = "";
 		
 		// Act
 		int sumValues = strCalc.add(input);
-	    
+		
 		// Assert
 		assertEquals(0,sumValues);
 	}
+	
+	//6. Test case to test exception
 	@Test (expected = StringCalculatorException.class)
-	public void testAddFalseInput() throws StringCalculatorException{
+	public void testAddFalseInputLetter() throws StringCalculatorException{
 		// Arrange
 		StringCalculator strCalc = new StringCalculator();
 		String input = "12,54,AA,2";
@@ -175,6 +221,17 @@ public class StringCalculatorTest {
 		// Act
 		int sumValues = strCalc.add(input);
 	}
+	
+	@Test (expected = StringCalculatorException.class)
+	public void testAddFalseInputNegativeDigit() throws StringCalculatorException{
+		// Arrange
+		StringCalculator strCalc = new StringCalculator();
+		String input = "12,54,-3,2";
+		
+		// Act
+		int sumValues = strCalc.add(input);
+	}
+	
 
 
 }
