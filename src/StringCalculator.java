@@ -1,18 +1,19 @@
-
+import java.util.ArrayList;
 
 public class StringCalculator {
 	
 	protected String[] inputs;
-	protected int[] numbers;
+	protected ArrayList<Integer> numbers;
 	
 	StringCalculator(){
+		numbers = new ArrayList<Integer>();
 	}
 	
 	protected void setInput(String input) {
 		inputs = input.split(",");
 	}
 	
-	public boolean checkInput() {
+	protected boolean checkInput() {
 		
 		if(inputs.length == 1 && inputs[0].isEmpty()) {
 			return true;
@@ -27,6 +28,20 @@ public class StringCalculator {
 		}	
 		
 		return true;
+	}
+	
+	protected void parseNumbers() {
+		
+		if(inputs[0].isEmpty()) {
+			numbers.add(0);
+			return;
+		}
+		
+		for(int i = 0; i < inputs.length; i++) {
+			numbers.add(Integer.parseInt(inputs[i]));
+		}
+		
+		return;
 	}
 	
 	
