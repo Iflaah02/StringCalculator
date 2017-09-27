@@ -5,7 +5,7 @@ public class StringCalculator {
 	public static int splitLength;
 	public static int lengthNumbers;
 	public int add(String numbersStr) throws StringCalculatorException {
-		// Returns the sum of the numbers given in numbersStr
+		// Returns the sum of the numbers given in numbersStr d
 		
 		
 		numbers=getStringContent(numbersStr);

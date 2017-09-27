@@ -38,7 +38,7 @@ public class StringCalculatorTest {
 	/*@Test (expected = StringCalculatorException.class)
 	public void testLength() throws StringCalculatorException {
 		StringCalculator calculator = new StringCalculator();
-		calculator.add("1,2,3");
+		calculator.add("1,2,3"); d
 				
 	}*/
 	
