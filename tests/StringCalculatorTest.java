@@ -79,4 +79,28 @@ public class StringCalculatorTest {
 		//Act
 		Integer result = calculator.add(input);
 	}
+	
+	@Test
+	public void add_newLineSeparator_returnSum() throws StringCalculatorException {
+		//Init
+		StringCalculator calculator = new StringCalculator();
+		String input = "12,13" + System.getProperty("line.separator") + "25,42";
+		
+		//Act
+		Integer result = calculator.add(input);
+		
+		//Test
+		Integer expected = 92;
+		assertEquals(expected, result);
+	}
+	
+	/*@Test(expected = StringCalculatorException.class) 
+	public void add_newLineSeparator_throwsException() throws StringCalculatorException {
+		//Init
+		StringCalculator calculator = new StringCalculator();
+		String input = "12," + System.getProperty("line.separator");
+		
+		//Act
+		Integer result = calculator.add(input);
+	}*/
 }
