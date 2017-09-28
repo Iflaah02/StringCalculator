@@ -94,7 +94,7 @@ public class StringCalculatorTest {
 		assertEquals(expected, result);
 	}
 	
-	/*@Test(expected = StringCalculatorException.class) 
+	@Test(expected = StringCalculatorException.class) 
 	public void add_newLineSeparator_throwsException() throws StringCalculatorException {
 		//Init
 		StringCalculator calculator = new StringCalculator();
@@ -102,5 +102,5 @@ public class StringCalculatorTest {
 		
 		//Act
 		Integer result = calculator.add(input);
-	}*/
+	}
 }
