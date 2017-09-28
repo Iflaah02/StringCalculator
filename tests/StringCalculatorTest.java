@@ -47,10 +47,30 @@ public class StringCalculatorTest {
 	}
 
 	@Test(expected = StringCalculatorException.class) 
-	public void add_moreThanThreeElementString_returnSum() throws StringCalculatorException {
+	public void add_moreThanThreeElementString_throwException() throws StringCalculatorException {
 		//Init
 		StringCalculator calculator = new StringCalculator();
 		String input = "12,13,25,42";
+		
+		//Act
+		Integer result = calculator.add(input);
+	}
+	
+	@Test(expected = StringCalculatorException.class) 
+	public void add_oneNegativeElementString_throwException() throws StringCalculatorException {
+		//Init
+		StringCalculator calculator = new StringCalculator();
+		String input = "-12";
+		
+		//Act
+		Integer result = calculator.add(input);
+	}
+	
+	@Test(expected = StringCalculatorException.class) 
+	public void add_multipleNegativeElementString_throwException() throws StringCalculatorException {
+		//Init
+		StringCalculator calculator = new StringCalculator();
+		String input = "12,-13";
 		
 		//Act
 		Integer result = calculator.add(input);
