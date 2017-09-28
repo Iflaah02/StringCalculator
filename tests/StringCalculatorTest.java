@@ -47,7 +47,7 @@ public class StringCalculatorTest {
 	}
 
 	@Test
-	public void add_moreThanThreeElementString_throwException() throws StringCalculatorException {
+	public void add_moreThanThreeElementString_returnSum() throws StringCalculatorException {
 		//Init
 		StringCalculator calculator = new StringCalculator();
 		String input = "12,13,25,42";
