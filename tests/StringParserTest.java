@@ -12,7 +12,8 @@ public class StringParserTest {
 		String input = "";
 		
 		//Act
-		List<Integer> result = StringParser.parseIntegerList(input, ",");
+		StringParser parser = new StringParser();
+		List<Integer> result = parser.parseIntegerList(input, ",");
 		
 		//Test
 		assertTrue(result.isEmpty());
@@ -24,7 +25,8 @@ public class StringParserTest {
 		String input = "12";
 		
 		//Act
-		List<Integer> result = StringParser.parseIntegerList(input, ",");
+		StringParser parser = new StringParser();
+		List<Integer> result = parser.parseIntegerList(input, ",");
 		
 		//Test
 		assertEquals(1, result.size());
@@ -36,7 +38,8 @@ public class StringParserTest {
 		String input = "12,13,15,20";
 		
 		//Act
-		List<Integer> result = StringParser.parseIntegerList(input, ",");
+		StringParser parser = new StringParser();
+		List<Integer> result = parser.parseIntegerList(input, ",");
 		
 		//Test
 		assertEquals(4, result.size());
@@ -48,7 +51,8 @@ public class StringParserTest {
 		String input = "12";
 		
 		//Act
-		List<Integer> result = StringParser.parseIntegerList(input, ",");
+		StringParser parser = new StringParser();
+		List<Integer> result = parser.parseIntegerList(input, ",");
 		
 		//Test
 		Integer expected = 12;
@@ -62,7 +66,8 @@ public class StringParserTest {
 		String input = "12,13";
 		
 		//Act
-		List<Integer> result = StringParser.parseIntegerList(input, ",");
+		StringParser parser = new StringParser();
+		List<Integer> result = parser.parseIntegerList(input, ",");
 		
 		//Test
 		Integer value1 = 12;
@@ -78,6 +83,7 @@ public class StringParserTest {
 		String input = "dsadas";
 		
 		//Act
-		List<Integer> result = StringParser.parseIntegerList(input, ",");
+		StringParser parser = new StringParser();
+		List<Integer> result = parser.parseIntegerList(input, ",");
 	}
 }

@@ -2,7 +2,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class StringParser {
-	public static List<Integer> parseIntegerList(String numberStr, String separator) throws NumberFormatException{
+	public List<Integer> parseIntegerList(String numberStr, String separator) throws NumberFormatException{
 		List<Integer> argumentList = new LinkedList<Integer>();
 		
 		if(numberStr.isEmpty()) {
