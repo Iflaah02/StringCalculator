@@ -1,9 +1,16 @@
+package calculator;
+
+import org.junit.*;
+import static org.junit.Assert.*;
+
 
 public class StringCalculator {
-	public int add(String numbersStr) {
-		// Returns the sum of the numbers given in numbersStr
-		
-		// not yet implemented
+	public static int add(String text) {
+		if(text.empty()) {
 		return 0;
+	} else {
+		return Integer.parseInt(text);
+	}
 	}
 }
+

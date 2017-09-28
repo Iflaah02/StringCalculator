@@ -1,12 +1,17 @@
+package calculator;
+
+import org.junit.*;
 import static org.junit.Assert.*;
 
-import org.junit.Test;
-
-public class StringCalculatorTest {
-
+public class stringcalculatortest {
 	@Test
-	public void test() {
-		fail("Not yet implemented");
+	public void whenEmptyShouldReturnZero() {
+	assertEquals(0, stringcalculator.add(""));
+}
+	
+	@Test
+	public void shouldReturnNumbrerOneNumber() {
+	assertEquals(1, stringcalculator.add("1"));
 	}
-
+	
 }
