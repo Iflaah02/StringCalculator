@@ -5,8 +5,54 @@ import org.junit.Test;
 public class StringCalculatorTest {
 
 	@Test
-	public void test() {
-		fail("Not yet implemented");
+	public void add_emptyString_returnZero() throws StringCalculatorException {
+		//Init
+		StringCalculator calculator = new StringCalculator();
+		String input = "";
+		
+		//Act
+		Integer result = calculator.add(input);
+		
+		//Test
+		Integer expected = 0;
+		assertEquals(expected, result);
+	}
+	
+	@Test
+	public void add_oneElementString_returnValue() throws StringCalculatorException {
+		//Init
+		StringCalculator calculator = new StringCalculator();
+		String input = "12";
+		
+		//Act
+		Integer result = calculator.add(input);
+		
+		//Test
+		Integer expected = 12;
+		assertEquals(expected, result);
+	}
+	
+	@Test
+	public void add_twoElementString_returnSum() throws StringCalculatorException {
+		//Init
+		StringCalculator calculator = new StringCalculator();
+		String input = "12,13";
+		
+		//Act
+		Integer result = calculator.add(input);
+		
+		//Test
+		Integer expected = 25;
+		assertEquals(expected, result);
 	}
 
+	@Test(expected = StringCalculatorException.class) 
+	public void add_moreThanThreeElementString_returnSum() throws StringCalculatorException {
+		//Init
+		StringCalculator calculator = new StringCalculator();
+		String input = "12,13,25,42";
+		
+		//Act
+		Integer result = calculator.add(input);
+	}
 }
