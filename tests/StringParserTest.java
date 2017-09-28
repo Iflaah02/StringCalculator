@@ -71,9 +71,26 @@ public class StringParserTest {
 		
 		//Test
 		Integer value1 = 12;
-		Integer value2 = 12;
+		Integer value2 = 13;
 		Integer actual1 = result.get(0);
-		Integer actual2 = result.get(0);
+		Integer actual2 = result.get(1);
+		assertTrue(value1 == actual1 && value2 == actual2);
+	}
+	
+	@Test
+	public void parseIntegerList_negativeIntegerString_correctValues() {
+		//Init
+		String input = "-12,13";
+		
+		//Act
+		StringParser parser = new StringParser();
+		List<Integer> result = parser.parseIntegerList(input, ",");
+		
+		//Test
+		Integer value1 = -12;
+		Integer value2 = 13;
+		Integer actual1 = result.get(0);
+		Integer actual2 = result.get(1);
 		assertTrue(value1 == actual1 && value2 == actual2);
 	}
 	

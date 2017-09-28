@@ -11,7 +11,7 @@ public class StringParser {
 		else {
 			String arguments[] = numberStr.split(separator);
 			for(int i = 0; i < arguments.length; i++) {
-				int argument = Integer.parseInt(arguments[0]);
+				int argument = Integer.parseInt(arguments[i]);
 				argumentList.add(argument);
 			}
 		}
