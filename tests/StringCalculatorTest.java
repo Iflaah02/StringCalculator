@@ -179,7 +179,32 @@ public class StringCalculatorTest {
 	}
 	
 	@Test
-	public void test_add() throws StringCalculatorException
+	public void test_addOneNumber() throws StringCalculatorException
+	{
+		//Arrange
+		StringCalculator cal = new StringCalculator();
+		
+		//Act
+		int sum = cal.add("40");
+		
+		//Assert
+		assertEquals(40, sum);
+	}
+	
+	@Test
+	public void test_hasNewLine()
+	{
+		//Arrange
+		StringCalculator cal = new StringCalculator();
+		
+		//Act
+		
+		//Assert
+		assertTrue(cal.hasNewLine("1\n2,3"));
+	}
+	
+	@Test
+	public void test_addTwoNumbers() throws StringCalculatorException
 	{
 		//Arrange
 		StringCalculator cal = new StringCalculator();
@@ -191,4 +216,16 @@ public class StringCalculatorTest {
 		assertEquals(100, sum);
 	}
 	
+	@Test
+	public void test_addNumbersWithNewLines() throws StringCalculatorException
+	{
+		//Arrange
+		StringCalculator cal = new StringCalculator();
+		
+		//Act
+		int sum = cal.add("1\n2,3");
+		
+		//Assert
+		assertEquals(6, sum);
+	}
 }

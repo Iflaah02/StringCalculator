@@ -19,26 +19,58 @@ public class StringCalculator {
 		{
 			if (hasValidInputs(inputStr))
 			{
-				if (hasOneNumber(inputStr))
+				if (!hasNewLine(inputStr))
 				{
-					num1 = Integer.parseInt(inputStr);
-					num2 = 0;
-				}
-				else
-				{
-					if (hasTwoNumbers(inputStr)) 
+					if (hasOneNumber(inputStr))
 					{
-						if (isInCorrectOrder(inputStr))
-						{
-							String[] tokens = parseString(inputStr);
-							int[] nums = convertStringToInteger(tokens);
-							num1 = nums[0];
-							num2 = nums[1];
-							if (num1 < 0 || num2 < 0) throw new StringCalculatorException("Negative numbers detected!");
-						}
-						else throw new StringCalculatorException("Wrong order detected!");
+						num1 = Integer.parseInt(inputStr);
+						num2 = 0;
 					}
-					else throw new StringCalculatorException("Unknown amount of numbers or invalid usage detected!");
+					else
+					{
+						if (hasTwoNumbers(inputStr)) 
+						{
+							if (isInCorrectOrder(inputStr))
+							{
+								String[] tokens = parseString(inputStr);
+								int[] nums = convertStringToInteger(tokens);
+								num1 = nums[0];
+								num2 = nums[1];
+								if (num1 < 0 || num2 < 0) throw new StringCalculatorException("Negative numbers detected!");
+							}
+							else throw new StringCalculatorException("Wrong order detected!");
+						}
+						else throw new StringCalculatorException("Unknown amount of numbers or invalid usage detected!");
+					}
+				}
+				else 
+				{
+					String[] lines = parseNewLine(inputStr);
+					for(String line : lines)
+					{
+						if (hasOneNumber(line))
+						{
+							num1 =+ Integer.parseInt(line);
+						}
+						else
+						{
+							if (hasTwoNumbers(line)) 
+							{
+								if (isInCorrectOrder(line))
+								{
+									String[] tokens = parseString(line);
+									int[] nums = convertStringToInteger(tokens);
+									int n1 = nums[0];
+									int n2 = nums[1];
+									if (n1 < 0 || n2 < 0) throw new StringCalculatorException("Negative numbers detected!");
+									else num2 =+ n1+n2;
+								}
+								else throw new StringCalculatorException("Wrong order detected!");
+							}
+							else throw new StringCalculatorException("Unknown amount of numbers or invalid usage detected!");
+						}
+					
+					}
 				}
 			}
 			else throw new StringCalculatorException("Invalid input!");
@@ -155,7 +187,19 @@ public class StringCalculator {
 	
 	public boolean hasNewLine(String s)
 	{
-		return false;
+		boolean state = false;
+		char[] chars = s.toCharArray();
+		for(int i = 0; i < s.length(); i++)
+		{
+			if (chars[i] == '\n') state = true;  
+		}
+		return state;
+	}
+	
+	public String[] parseNewLine(String s)
+	{
+		String[] lines = s.split("\n");
+		return lines;
 	}
 	
 	public int[] convertStringToInteger(String[] tokens)
