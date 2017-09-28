@@ -63,4 +63,22 @@ public class StringCalculatorTest {
 		StringCalculator calc = new StringCalculator();
 		calc.add("7,4,");
 	}
+	
+	@Test (expected = StringCalculatorException.class)
+	public void addWithNegativeNumber() throws StringCalculatorException {
+		StringCalculator calc = new StringCalculator();
+		calc.add("-10");
+	}
+	
+	@Test (expected = StringCalculatorException.class)
+	public void addWithInvalidInput() throws StringCalculatorException {
+		StringCalculator calc = new StringCalculator();
+		calc.add("This,Is,wrong,inputm165");
+	}
+	
+	@Test (expected = StringCalculatorException.class)
+	public void addWithInvalidInput2() throws StringCalculatorException {
+		StringCalculator calc = new StringCalculator();
+		calc.add("0,12,56,one");
+	}
 }
