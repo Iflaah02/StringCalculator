@@ -18,4 +18,12 @@ public class StringCalculatorTest {
 		assertEquals(3, result);
 	}
 
+	@Test
+	public void testSumAnyQuantityOfNumbers() {
+		// test1: let's test the sum of 4 numbers. (the next low-hanging fruit)
+		int numbers[] = {1, 2, 3, 4};
+		int result = calculator.sum(numbers);
+		assertEquals(10, result);
+	}
+
 }
