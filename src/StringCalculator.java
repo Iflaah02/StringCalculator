@@ -15,14 +15,7 @@ public class StringCalculator {
 			throw new StringCalculatorException();
 		}
 			
-		switch(arguments.size()) {
-			case 0: return 0; 
-			case 1: return arguments.get(0);
-			case 2: return arguments.get(0) + arguments.get(1);
-			default:
-				throw new StringCalculatorException();
-		}
-		
+		return sumListElements(arguments);
 	}
 	
 	private boolean hasNegatives(List<Integer> integerList) {
@@ -33,5 +26,15 @@ public class StringCalculator {
 		}
 		
 		return false;
+	}
+	
+	private Integer sumListElements(List<Integer> integerList) {
+		Integer sum = 0;
+		
+		for(Integer x : integerList) {
+			sum += x;
+		}
+		
+		return sum;
 	}
 }

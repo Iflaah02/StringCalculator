@@ -46,7 +46,7 @@ public class StringCalculatorTest {
 		assertEquals(expected, result);
 	}
 
-	@Test(expected = StringCalculatorException.class) 
+	@Test
 	public void add_moreThanThreeElementString_throwException() throws StringCalculatorException {
 		//Init
 		StringCalculator calculator = new StringCalculator();
@@ -54,6 +54,10 @@ public class StringCalculatorTest {
 		
 		//Act
 		Integer result = calculator.add(input);
+		
+		//Test
+		Integer expected = 92;
+		assertEquals(expected, result);
 	}
 	
 	@Test(expected = StringCalculatorException.class) 
