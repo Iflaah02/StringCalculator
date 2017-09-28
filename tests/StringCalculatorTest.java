@@ -39,4 +39,16 @@ public class StringCalculatorTest {
 		StringCalculator calc = new StringCalculator();
 		assertEquals("Error with empty string", 80, calc.add("7,3,50,12,8"));
 	}
+	
+	@Test
+	public void addWithEndl() {
+		StringCalculator calc = new StringCalculator();
+		assertEquals("Error with empty string", 80, calc.add("7,3\n50,12\n8"));
+	}
+	
+	@Test
+	public void addWithEndlOnly() {
+		StringCalculator calc = new StringCalculator();
+		assertEquals("Error with empty string", 174, calc.add("7\n3\n10\n154"));
+	}
 }
