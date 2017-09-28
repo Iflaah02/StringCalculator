@@ -1,12 +1,21 @@
 import static org.junit.Assert.*;
 
+import org.junit.Before;
 import org.junit.Test;
 
 public class StringCalculatorTest {
+	private StringCalculator calculator;
+
+	@Before
+	public void init() {
+		calculator = new StringCalculator();
+	}
 
 	@Test
-	public void test() {
-		fail("Not yet implemented");
+	public void testSumTwoNumbers() {
+		// test1: let's test the sum of 2 numbers. (low-hanging fruit!)
+		int result = calculator.sum(1, 2);
+		assertEquals(3, result);
 	}
 
 }
