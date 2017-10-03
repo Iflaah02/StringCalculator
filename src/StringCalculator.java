@@ -6,4 +6,12 @@ public class StringCalculator {
 		// not yet implemented
 		return 0;
 	}
+	
+	public int substract(String numbersStr) {
+		// Slicing 
+		
+		// not yet implemented
+		return 0;
+	}
 }
+
