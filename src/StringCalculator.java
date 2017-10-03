@@ -7,8 +7,8 @@ public class StringCalculator {
 		return 0;
 	}
 	
-	public int substract(String numbersStr) {
-		// Slicing 
+	public int substract2(String numbersStr) {
+		// Refactoring  
 		
 		// not yet implemented
 		return 0;
