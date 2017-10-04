@@ -43,12 +43,12 @@ public class StringCalculatorTest {
 	@Test (expected = StringCalculatorException.class)
 	public void checkNegatives() throws StringCalculatorException {
 		StringCalculator calc = new StringCalculator();
-		
+
 		String testString = "-2,3,2";
 		
 		calc.add(testString);
 		
-
+		assertEquals("-2,3,2", testString);
 	}
 	@Test
 	public void addNumbers12() {
@@ -94,7 +94,7 @@ public class StringCalculatorTest {
 		assertEquals(35, sum);
 	}
 	
-	@Test
+	/*@Test
 	public void addNumbers1space234() {
 		StringCalculator calc = new StringCalculator();
 		
@@ -103,7 +103,7 @@ public class StringCalculatorTest {
 		int sum = calc.add(testString);
 		
 		assertEquals(35, sum);
-	}
+	}*/
 
 	
 
