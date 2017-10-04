@@ -1,4 +1,10 @@
 
 public class StringCalculatorException extends Exception {
+	
+	public StringCalculatorException(String message) {
+		super(message);
+	}
+	
+	public StringCalculatorException() {}
 
 }

@@ -1,9 +1,28 @@
-
+// There didn't appear to be an opportunity to introduce a parameter object due
+// to a lack of multiparameter methods
 public class StringCalculator {
-	public int add(String numbersStr) {
-		// Returns the sum of the numbers given in numbersStr
+	
+	private String string; 
+	
+	public int add(String numbersStr) throws StringCalculatorException {
 		
-		// not yet implemented
-		return 0;
+		string = numbersStr;
+		
+		String[] numbers = StringCalculationParser.splitByCommasOrNewlines(string);
+		
+		int result = 0;
+		
+		for(String number : numbers) {
+			
+			result += StringCalculationParser.validateNumber(number);
+			
+		}
+	
+		return result;
 	}
+	
+	public String getString() {
+		return string;
+	}
+	
 }
