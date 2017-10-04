@@ -34,13 +34,31 @@ public class StringCalculatorTest {
 		assertEquals(3210, strCalc.add(str));
 	}
 	
+	@Test
+	public void sumWithNegativeNumberTest() {
+		StringCalculator strCalc = new StringCalculator();
+		
+		String str = "1,-2,3";
+		
+		assertEquals(0, strCalc.add(str));
+	}
+	
+	@Test
+	public void sumWithNonNumberTest() {
+		StringCalculator strCalc = new StringCalculator();
+		
+		String str = "1,two,3";
+		
+		assertEquals(0, strCalc.add(str));
+	}
+	
 	@Test (expected = StringCalculatorException.class)
 	public void inputValidatorTestEndsWithIllegalChar() throws StringCalculatorException{
 		StringCalculator strCalc = new StringCalculator();
 		
 		String str = "1,2,";
 				
-		strCalc.add(str);
+		assertEquals(true, strCalc.inputValidityChecker(str));
 	}
 	
 	@Test (expected = StringCalculatorException.class)
@@ -49,7 +67,7 @@ public class StringCalculatorTest {
 		
 		String str = "1,2,-3";
 				
-		strCalc.add(str);
+		assertEquals(true, strCalc.inputValidityChecker(str));
 	}
 	
 	@Test (expected = StringCalculatorException.class)
@@ -57,8 +75,9 @@ public class StringCalculatorTest {
 		StringCalculator strCalc = new StringCalculator();
 		
 		String str = "1,2,3,4";
+		int[] eResult = new int[] {1,2,3,4};
 				
-		strCalc.sliceString(str);
+		assertEquals(eResult, strCalc.sliceString(str));
 	}
 	
 	@Test (expected = StringCalculatorException.class)
@@ -67,7 +86,7 @@ public class StringCalculatorTest {
 		
 		String str = "one,two,three";
 				
-		strCalc.add(str);
+		assertEquals(true, strCalc.inputValidityChecker(str));
 	}
 	
 	@Test
