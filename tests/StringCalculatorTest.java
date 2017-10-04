@@ -39,17 +39,18 @@ public class StringCalculatorTest {
 	@Test
 	public void testSum() throws StringCalculatorException {
 		StringCalculator calculator = new StringCalculator();
-		calculator.add("5,2,7");
+		//CalculateSum sumCalculator = new CalculateSum();
+		
 
-		int sumOfNumbers = calculator.sumOfNumbers();
-		assertEquals(14, sumOfNumbers);
+		//int sumOfNumbers = sumCalculator.sumOfNumbers();
+		assertEquals(14, calculator.add("5,2,7"));
 	}
 
 	@Test
 	public void testnewLine() throws StringCalculatorException {
 		StringCalculator calculator = new StringCalculator();
 		calculator.add("5,2");
-		calculator.newLines();
+		//calculator.newLines();
 
 		int withNewLine = calculator.lengthNumbers;
 		assertEquals(2, withNewLine);
@@ -59,7 +60,7 @@ public class StringCalculatorTest {
 	public void testnewLine2() throws StringCalculatorException {
 		StringCalculator calculator = new StringCalculator();
 		calculator.add("5\n3,2");
-		calculator.newLines();
+		//calculator.newLines();
 
 		int withNewLine = calculator.lengthNumbers;
 		assertEquals(3, withNewLine);
@@ -86,7 +87,7 @@ public class StringCalculatorTest {
 		StringCalculator calculator = new StringCalculator();
 
 		calculator.add("gel");
-		int sum = calculator.sumOfNumbers();
+		//int sum = calculator.sumOfNumbers();
 		// assertEquals(3,sum);
 
 	}
@@ -97,7 +98,7 @@ public class StringCalculatorTest {
 
 		int sum = calculator.add("1,2");
 		assertEquals(3, sum);
-	}
+	} 
 
 	@Test
 	public void testMerge3NumbersWithNewLine() throws StringCalculatorException {
