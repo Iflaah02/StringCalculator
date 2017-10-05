@@ -103,16 +103,9 @@ public class StringCalculator {
 	
 	public boolean hasTwoNumbers(String s)
 	{
-		boolean state = false;
-		char[] chars = s.toCharArray();
-		int ctr = 0;
-		for(int i = 0; i < s.length(); i++)
-		{
-			if (chars[i] == ',') ctr++;
-		}
-		if (ctr == 1) state = true;
-		else state = false;
-		return state;
+		String[] tokens = s.split(",");
+		if (tokens.length == 2) return true;
+		else return false;
 	}
 	
 	public boolean hasValidInputs(String s)
