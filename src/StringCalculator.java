@@ -6,15 +6,7 @@ public class StringCalculator {
 		// Returns the sum of the numbers given in numbersStr
 		
 		int sum = 0;
-		int ncount = 0;
-		
-		try {
-			ncount = numberCount(numbersStr);
-		} catch (StringCalculatorException exception){
-			System.out.println("Invalid input.");
-			return 0;
-		}
-		
+		int ncount = ncount(numbersStr);
 		int[] ints = getIntegers(numbersStr, ncount);
 
 		for(int i : ints) {
@@ -22,6 +14,17 @@ public class StringCalculator {
 		}
 		
 		return sum;
+	}
+
+	private int ncount(String numbersStr) {
+		int ncount = 0;
+		try {
+			ncount = numberCount(numbersStr);
+		} catch (StringCalculatorException exception) {
+			System.out.println("Invalid input.");
+			return 0;
+		}
+		return ncount;
 	}
 
 	/*public String readInput() 
