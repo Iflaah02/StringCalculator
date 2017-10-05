@@ -8,7 +8,7 @@ public class StringCalculator {
 			
 		String[] splittedString = splitString(numbersStr);
 		
-		return calculateSum(splittedString);
+		return CalculateSum(splittedString);
 	}
 	
 	public String[] splitString(String numbersStr)
@@ -22,13 +22,7 @@ public class StringCalculator {
 	
 	public boolean verifyInput(String numbersStr)
 	{
-		if(IsNullOrEmpty(numbersStr))
-			return false;
-		else if(!ContainsNumber(numbersStr))
-			return false;
-		else if(numbersStr.endsWith(",") || numbersStr.endsWith("\n"))
-			return false;
-		else if(numbersStr.contains(",\n") || numbersStr.contains("\n,") || numbersStr.contains(",,") || numbersStr.contains("\n\n"))
+		if(IsNullOrEmpty(numbersStr) || !ContainsNumbers(numbersStr) || InvalidSeparators(numbersStr))
 			return false;
 		else if(numbersStr.matches("^[,\\d\\n]+$"))
 			return true;
@@ -36,12 +30,22 @@ public class StringCalculator {
 			return false;
 	}
 	
+	public boolean InvalidSeparators(String string)
+	{
+		return (string.contains(",\n") || 
+				string.contains("\n,") || 
+				string.contains(",,") || 
+				string.contains("\n\n") || 
+				string.endsWith(",") || 
+				string.endsWith("\n"));
+	}
+	
 	public boolean IsNullOrEmpty(String string)
 	{
 		return (string == null || string.isEmpty());
 	}
 	
-	public boolean ContainsNumber(String string)
+	public boolean ContainsNumbers(String string)
 	{
 	    boolean containsDigit = false;
 
@@ -56,7 +60,7 @@ public class StringCalculator {
 	    return containsDigit;		
 	}
 	
-	private int calculateSum(String[] numberArray)
+	private int CalculateSum(String[] numberArray)
 	{
 		int amount = 0;
 		
