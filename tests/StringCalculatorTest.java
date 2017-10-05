@@ -10,7 +10,7 @@ public class StringCalculatorTest {
 		int expectedOutput = 2;
 
 		int value = calculator.add("2");
-		assertEquals(value, expectedOutput);
+		assertEquals(expectedOutput, value);
 	}
 
 	@Test
@@ -30,7 +30,7 @@ public class StringCalculatorTest {
 		int expectedOutput = 10;
 		int value = calculator.add("4, 6");
 
-		assertEquals(value, expectedOutput);
+		assertEquals(expectedOutput, value);
 	}
 
 	@Test

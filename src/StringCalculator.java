@@ -5,28 +5,31 @@ public class StringCalculator {
 		String arr[] = numbersStr.trim().split(",\\s+"); // ",\\s+" "[a-zA-Z ]+"
 		int sum = 0;
 
+		if (!validInput(arr.length, numbersStr)) {
+			return 0;
+		}
 		for (int i = 0; i < arr.length; i++) {
 
-			if (arr.length > 2) {
+			int parsedNumber = Integer.parseInt(arr[i]);
+
+			if (parsedNumber < 0) {
 				return 0;
-
-			} else if (numbersStr == " ") {
-				return 0;
-
-			} else {
-
-				int parsedNumber = Integer.parseInt(arr[i]);
-
-				if (parsedNumber < 0) {
-					return 0;
-				}
-
-				sum = sum + parsedNumber;
-				System.out.printf("sum: " + sum + "\n");
 			}
 
+			sum = sum + parsedNumber;
 		}
-
 		return sum;
+
 	}
+
+	public boolean validInput(int length, String input) {
+		if (length > 2) {
+			return false;
+		} else if (input == " ") {
+			return false;
+		} else {
+			return true;
+		}
+	}
+
 }
