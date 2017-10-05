@@ -8,18 +8,22 @@ public class StringCalculator {
 		// Returns the sum of the numbers given in numbersStr
 		
 		int result = 0;
-		List<Integer> numbers = new ArrayList<>();
-		try {
-		  numbers = parseInput(numbersStr);
-		} catch (StringCalculatorException e) {
-			System.out.println("Invalid input given");
-			return -1;
-		}
+		List<Integer> numbers = parseNumbers(numbersStr);
 		//count
 		for(int i = 0; i < numbers.size(); i++) {
 			result = result + numbers.get(i);
 		}
 		return result;
+	}
+
+	private List<Integer> parseNumbers(String numbersStr) {
+		List<Integer> numbers = new ArrayList<>();
+		try {
+		numbers = parseInput(numbersStr);
+		} catch (StringCalculatorException e) {
+			
+		}
+		return numbers;
 	}
 	
 	public boolean hasInvalidInput(char[] charNumbers) {
@@ -34,13 +38,22 @@ public class StringCalculator {
 	public List<Integer> parseInput(String numbersStr) throws StringCalculatorException{
 		List<Integer> numbers = new ArrayList<>();
 		char[] charNumbers = numbersStr.toCharArray();
-		String currentNumber = new String("");
+		
 		
 		if (hasInvalidInput(charNumbers)) {
 			throw new StringCalculatorException();
 		}
 		
-		//go through each character of the string
+		//extract numbers from characterArray
+		numbers = extractNumbers(charNumbers);
+		return numbers;
+	}
+	
+	public List<Integer> extractNumbers(char[] charNumbers){
+		/*this function takes the user inputted string as characterarray and extracts all numbers in it. this integer list is then returned */
+		
+		List<Integer> numbers = new ArrayList<>();
+		String currentNumber = new String("");
 		for(int i = 0; i < charNumbers.length; i++) {
 			
 			if (charNumbers[i] == ',' || charNumbers[i] == '\n') {
@@ -63,7 +76,7 @@ public class StringCalculator {
 				numbers.add(currentInt);		
 				}
 			}
-		}	
+		}
 		return numbers;
 	}
 }

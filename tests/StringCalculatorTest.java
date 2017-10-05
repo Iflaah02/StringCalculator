@@ -10,13 +10,7 @@ public class StringCalculatorTest {
 	
 	@Test
 	public void testParseInput() {
-		StringCalculator obj = new StringCalculator();
-		List<Integer> list = new ArrayList<>();
-		try {
-		 list =  obj.parseInput("1,23,4");
-		} catch (StringCalculatorException e) {
-			
-		}
+		List<Integer> list = createList();
 		List<Integer> testList = new ArrayList<>();
 		testList.add(1);
 		testList.add(23);
@@ -30,15 +24,18 @@ public class StringCalculatorTest {
 		assertNotEquals(testList, list);
 		
 	}
-	@Test
-	public void testParseInputWithNewLine() {
+	private List<Integer> createList() {
 		StringCalculator obj = new StringCalculator();
 		List<Integer> list = new ArrayList<>();
 		try {
-			  list =  obj.parseInput("1,23,4");
-			} catch (StringCalculatorException e) {
-				
-			}
+			list = obj.parseInput("1,23,4");
+		} catch (StringCalculatorException e) {
+		}
+		return list;
+	}
+	@Test
+	public void testParseInputWithNewLine() {
+		List<Integer> list = createListWithNewline();
 		List<Integer> testList = new ArrayList<>();
 		testList.add(1);
 		testList.add(23);
@@ -50,6 +47,15 @@ public class StringCalculatorTest {
 		testList.add(3);
 		//list should not be equal
 		assertNotEquals(testList, list);	
+	}
+	private List<Integer> createListWithNewline() {
+		StringCalculator obj = new StringCalculator();
+		List<Integer> list = new ArrayList<>();
+		try {
+			list = obj.parseInput("1,23\n4");
+		} catch (StringCalculatorException e) {
+		}
+		return list;
 	}
 	@Test
 	public void testParseInputWithOnlyComma() {
