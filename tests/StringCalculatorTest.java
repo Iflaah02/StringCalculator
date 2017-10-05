@@ -46,6 +46,15 @@ public class StringCalculatorTest {
 		
 	}
 	
+	@Test (expected = StringCalculatorException.class)
+	public void addTest_alphabeticValues() throws StringCalculatorException {
+		StringCalculator calc = new StringCalculator();
+		String str = "7,ad4,3";
+		
+		calc.add(str);
+		
+	}
+	
 	@Test
 	public void validateSubstringTest_alphanumbericValues() {
 		StringCalculator calc = new StringCalculator();

@@ -7,11 +7,9 @@ public class StringCalculator {
 		int sum = 0;
 		
 		for (int i=0; i<parts.length; ++i) {
-			if (validateSubstring(parts[i])) {
-				int value = intFromString(parts[i]);
-				throwOnNegative(value);
-				sum += value;
-			}
+			int value = intFromString(parts[i]);
+			throwOnNegative(value);
+			sum += value;
 		}
 		
 		return sum;
@@ -49,7 +47,7 @@ public class StringCalculator {
 		String[] commaSplit = commaStr.split(",");
 		
 		for (int j=0; j<commaSplit.length; ++j) {
-			if (commaSplit[j].length() == 0) {
+			if (validateSubstring(commaSplit[j]) == false) {
 				throw new StringCalculatorException();
 			}
 		}
