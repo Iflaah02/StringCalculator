@@ -10,6 +10,7 @@ public class StringCalculatorTest {
 		addStringValue("0", 0);
 		addStringValue("1", 1);
 		addStringValue("2", 2);
+		addStringValue("-1", -1);
 	}
 	@Test
 	public void whenMultipleStringCharactersWithCommaThenReturnValue() {
