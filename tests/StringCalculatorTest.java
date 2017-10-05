@@ -165,7 +165,7 @@ public class StringCalculatorTest {
 		assertEquals(3,cal.num2);
 	}
 	
-	@Test
+	@Test (expected = StringCalculatorException.class)
 	public void test_negativeNumbers() throws StringCalculatorException
 	{
 		//Arrange
@@ -175,7 +175,7 @@ public class StringCalculatorTest {
 		int sum = cal.add("-5,6");
 		
 		//Assert
-		assertEquals(1, sum);
+		//assertEquals(1, sum);
 	}
 	
 	@Test

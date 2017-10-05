@@ -10,6 +10,10 @@ public class StringCalculator {
 	
 	public void detectNumbers(String inputStr) throws StringCalculatorException
 	{
+		//extracts the numbers from the input string and checks step by step that whether the string is empty, it has only valid characters, 
+		//there are new lines used in the string, it has only two numbers or more, and if it is in correct order. if all checks are ok then it calculates the sum of them
+		//and if something is wrong it returns proper exception to the user
+		
 		if (inputStr.isEmpty()) 
 			{
 				num1 = 0;
@@ -79,6 +83,8 @@ public class StringCalculator {
 	
 	public boolean hasOneNumber(String s)
 	{
+		//checks that whether the string has only one number like "1" or not
+		
 		boolean state = true;
 		char[] chars = s.toCharArray();
 		for(int i = 0; i < s.length(); i++)
@@ -103,6 +109,8 @@ public class StringCalculator {
 	
 	public boolean hasTwoNumbers(String s)
 	{
+		//checks that there is only two numbers in a string using "," between them
+		
 		String[] tokens = s.split(",");
 		if (tokens.length == 2) return true;
 		else return false;
@@ -110,6 +118,8 @@ public class StringCalculator {
 	
 	public boolean hasValidInputs(String s)
 	{
+		//checks that the user has entered only valid characters like 0~9, ',', '\n', '-'
+		
 		boolean state = true;
 		char[] chars = s.toCharArray();
 		for(int i = 0; i < s.length(); i++)
@@ -137,6 +147,8 @@ public class StringCalculator {
 	
 	public boolean isDigit(char c)
 	{
+		//checks that whether the character is only a digit (0~9)
+		
 		boolean state = true;
 		switch(c)
 			{
@@ -157,6 +169,8 @@ public class StringCalculator {
 	
 	public boolean isInCorrectOrder(String s)
 	{
+		//checks that if the numbers and ',' are in correct order. consider "3,5" is correct but "35," or ",35" are incorrect
+		
 		boolean state = true;
 		char[] chars = s.toCharArray();
 		for(int i = 0; i < s.length(); i++)
@@ -174,12 +188,16 @@ public class StringCalculator {
 	
 	public String[] parseString(String s)
 	{
+		//splits the string by ',' and put them in a string array
+		
 		String tokens[] = s.split(",");
 		return tokens;
 	}
 	
 	public boolean hasNewLine(String s)
 	{
+		// checks whether the '\n' is used in the string or not
+		
 		boolean state = false;
 		char[] chars = s.toCharArray();
 		for(int i = 0; i < s.length(); i++)
@@ -191,12 +209,16 @@ public class StringCalculator {
 	
 	public String[] parseNewLine(String s)
 	{
+		//splits the string by new lines entered and put all lines in a string array
+		
 		String[] lines = s.split("\n");
 		return lines;
 	}
 	
 	public int[] convertStringToInteger(String[] tokens)
 	{
+		//converts string values to their correspondent integer values 
+		
 		int[] nums = new int[2];
 		nums[0] = Integer.parseInt(tokens[0]);
 		nums[1] = Integer.parseInt(tokens[1]);
@@ -206,6 +228,8 @@ public class StringCalculator {
 	
 	public int add(String inputStr) throws StringCalculatorException
 	{
+		//adds two numbers and returns the result
+		
 		detectNumbers(inputStr);
 		sum = num1 + num2;
 		return sum;
