@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class StringCalculator {
@@ -15,6 +16,12 @@ public class StringCalculator {
 	}
 		
 	public ArrayList<Integer> getArrayInteger(String str) throws StringCalculatorException {
+		//check the length of string is not 0
+		if (str.length() == 0 ) {
+			Integer[] zero = new Integer[] {0};
+			return new ArrayList<Integer>(Arrays.asList(zero));
+		}
+		
 		//split with comma or newline
 		String[] splitedStr = str.split(",|\\n", -1);
 		ArrayList<Integer> intArray = new ArrayList<Integer>();

@@ -54,6 +54,22 @@ public class StringCalculatorTest {
 		assertEquals(expected ,intArray);
 	}
 	
+	@Test
+	public void test_getArrayInteger_0() throws StringCalculatorException {
+		//Arrange
+		StringCalculator calculator = new StringCalculator();
+		String str = "";
+		
+		Integer[] res = new Integer[] {0};
+		ArrayList<Integer> expected = new ArrayList<Integer>(Arrays.asList(res));
+		
+		//Act
+		ArrayList<Integer> intArray = calculator.getArrayInteger(str);
+		
+		//Assert
+		assertEquals(expected ,intArray);
+	}
+	
 	@Test (expected = StringCalculatorException.class)
 	public void test_getArrayInteger_throw_exception_notnumber() throws StringCalculatorException {
 		//Arrange
@@ -116,5 +132,76 @@ public class StringCalculatorTest {
 		//Assert
 		assertEquals(43 ,result);
 	}
+	
+	@Test
+	public void test_add_4_5() throws StringCalculatorException {
+		//Arrange
+		StringCalculator calculator = new StringCalculator();
+		String in = "4,5";
+		
+		//Act
+		int result = calculator.add(in);
+		
+		//Assert
+		assertEquals(9 ,result);
+	}
+	
+	@Test
+	public void test_add_empty() throws StringCalculatorException {
+		//Arrange
+		StringCalculator calculator = new StringCalculator();
+		String in = "";
+		
+		//Act
+		int result = calculator.add(in);
+		
+		//Assert
+		assertEquals(0 ,result);
+	}
+	
+	@Test
+	public void test_add_12_3_44() throws StringCalculatorException {
+		//Arrange
+		StringCalculator calculator = new StringCalculator();
+		String in = "12\n3,44";
+		
+		//Act
+		int result = calculator.add(in);
+		
+		//Assert
+		assertEquals(59 ,result);
+	}
 
+	@Test (expected = StringCalculatorException.class)
+	public void test_add_exception_invaliddelimitter() throws StringCalculatorException {
+		//Arrange
+		StringCalculator calculator = new StringCalculator();
+		String in = "12\n,44";
+		
+		//Act
+		int result = calculator.add(in);
+
+	}
+	
+	@Test (expected = StringCalculatorException.class)
+	public void test_add_exception_notnumber() throws StringCalculatorException {
+		//Arrange
+		StringCalculator calculator = new StringCalculator();
+		String in = "12AS,44";
+		
+		//Act
+		int result = calculator.add(in);
+
+	}
+	
+	@Test (expected = StringCalculatorException.class)
+	public void test_add_exception_negative() throws StringCalculatorException {
+		//Arrange
+		StringCalculator calculator = new StringCalculator();
+		String in = "-2,49";
+		
+		//Act
+		int result = calculator.add(in);
+
+	}
 }
