@@ -11,11 +11,9 @@ public class StringCalculator {
 		
 		while(x > 0) {
 		
-			sum += Integer.parseInt(parts[x-1]);
-			//System.out.println(parts[x-1]);
+			sum += stringParser(parts[x-1]);
 			
 			x--;
-			// not yet implemented
 		}
 		return 0;
 	}
@@ -27,5 +25,10 @@ public class StringCalculator {
 	
 	public int returnSum() {
 		return sum;
+	}
+	
+	public int stringParser(String parts) {
+		System.out.println("yes");
+		return Integer.parseInt(parts);
 	}
 }
