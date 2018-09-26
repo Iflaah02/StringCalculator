@@ -38,10 +38,14 @@ public class StringCalculator {
 	public String[] explode_onlyCommas(String numbersStr) throws IllegalArgumentException {
 		// return an int array, the numbers contained into the input string.
 		String[] result = {};
-		result = numbersStr.split(",");
-		for (String i : result) {
-			if(!isNumber(i.charAt(0))){
-				throw new IllegalArgumentException();
+		if (numbersStr.length() != 0){
+			result = numbersStr.split(",");
+			for (String i : result) {
+				for (int j=0; j<i.length(); j++) {
+					if(!isNumber(i.charAt(j))){
+						throw new IllegalArgumentException();
+					}
+				}
 			}
 		}
 		return result;
@@ -50,10 +54,14 @@ public class StringCalculator {
 	public String[] explode_newLineOrCommas(String numbersStr) throws IllegalArgumentException {
 		// return an int array, the numbers contained into the input string.
 		String[] result = {};
-		result = numbersStr.split(",|\\n");
-		for (String i : result) {
-			if(!isNumber(i.charAt(0))){
-				throw new IllegalArgumentException();
+		if (numbersStr.length() != 0){
+			result = numbersStr.split(",|\\n");
+			for (String i : result) {
+				for (int j=0; j<i.length(); j++) {
+					if(!isNumber(i.charAt(j))){
+						throw new IllegalArgumentException();
+					}
+				}
 			}
 		}
 		return result;
@@ -98,7 +106,7 @@ public class StringCalculator {
 		return result;
 	}
 	
-	public int[] convertStringArrayToIntArray(String[] words) {
+	public int[] convertStringArrayToIntArray(String[] words){
 		// converts all characters from a string array to their int value
 		int[] result = new int[words.length];
 		

@@ -26,10 +26,10 @@ public class StringCalculatorTest {
 		String str = "1,2,3";
 		String[] arrayOfString = {"1","2","3"};
 		
-		assertEquals(arrayOfString, calc.explode_onlyCommas(str));
+		assertArrayEquals(arrayOfString, calc.explode_onlyCommas(str));
 	}
 	
-	@Test
+	@Test (expected = IllegalArgumentException.class)
 	public void explode_onlyCommasTest_wrongSeparator() {
 		StringCalculator calc = new StringCalculator();
 		String str = "1,2)3";
@@ -42,7 +42,7 @@ public class StringCalculatorTest {
 		String str = "1/2,3n6";
 		String[] arrayOfString = {"1","2","3","6"};
 		
-		assertEquals(arrayOfString, calc.explode_anySeparator(str));
+		assertArrayEquals(arrayOfString, calc.explode_anySeparator(str));
 	}
 	
 	@Test
@@ -51,7 +51,7 @@ public class StringCalculatorTest {
 		String str = "";
 		String[] arrayOfString = {};
 		
-		assertEquals(arrayOfString, calc.explode_newLineOrCommas(str));
+		assertArrayEquals(arrayOfString, calc.explode_newLineOrCommas(str));
 	}
 	
 	@Test
@@ -60,7 +60,7 @@ public class StringCalculatorTest {
 		String str = "5,8\n8";
 		String[] arrayOfString = {"5","8","8"};
 		
-		assertEquals(arrayOfString, calc.explode_newLineOrCommas(str));
+		assertArrayEquals(arrayOfString, calc.explode_newLineOrCommas(str));
 	}
 	
 	@Test (expected = IllegalArgumentException.class)
@@ -76,7 +76,7 @@ public class StringCalculatorTest {
 		String str = "5,6,10,5,95";
 		String[] arrayOfString = {"5","6","10","5","95"};
 		
-		assertEquals(arrayOfString, calc.explode_anySeparator(str));
+		assertArrayEquals(arrayOfString, calc.explode_anySeparator(str));
 	}
 	
 	@Test
@@ -123,5 +123,11 @@ public class StringCalculatorTest {
 		
 		assertEquals(res, calc.add(str));
 	}
-
+	
+	@Test (expected = StringCalculatorException.class)
+	public void addTest_negativeNumber() throws StringCalculatorException{
+		StringCalculator calc = new StringCalculator();
+		String str = "5,6,7\n5,-3";
+		calc.add(str);
+	}
 }
