@@ -39,6 +39,14 @@ public class StringCalculatorTest {
 		assertEquals("No empty string", 24, result);
 	}
 	@Test
+	public void test31() throws StringCalculatorException {
+		StringCalculator calc = new StringCalculator();
+	
+		int result = calc.twoNumbers("12,");
+		// Assert
+		assertEquals("No empty string", 12, result);
+	}
+	@Test
 	public void test4() throws StringCalculatorException {
 		StringCalculator calc = new StringCalculator();
 	
@@ -46,5 +54,29 @@ public class StringCalculatorTest {
 		// Assert
 		assertEquals("No empty string", 24, result);
 	}
+	@Test
+	public void test5() throws StringCalculatorException {
+		StringCalculator calc = new StringCalculator();
+	
+		int result = calc.numbers("12\n12,12,12,12\n12");
+		// Assert
+		assertEquals("No empty string", 72, result);
+	}
 
+	@Test
+	public void test6() throws StringCalculatorException {
+	StringCalculator calc = new StringCalculator();
+
+	int result = calc.numbers("8,\n");
+	// Assert
+	assertEquals("No empty string", -1, result);
+	}
+	@Test
+	public void test7() throws StringCalculatorException {
+	StringCalculator calc = new StringCalculator();
+
+	int result = calc.numbers("8,5\n");
+	// Assert
+	assertEquals("No empty string", 13, result);
+	}
 }

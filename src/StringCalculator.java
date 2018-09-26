@@ -91,4 +91,27 @@ public class StringCalculator {
 		}
 		else return -1;
 	}
+
+	public int numbers(String numbersStr1) throws StringCalculatorException {
+		String redString1 = numbersStr1;
+		boolean empty = redString1.isEmpty();
+			if(empty) {
+				return 0;
+			}
+		boolean hadCommaSlash = redString1.contains(",\n");
+		if(hadCommaSlash) {
+			return -1;
+		}		
+		String delims = "[,\n]";
+		String[] numbers = redString1.split(delims);
+		int lukuja = numbers.length;
+		int summa = 0;
+		for (int i = 0; i < lukuja ; i++ ) {
+			summa = summa+ Integer.parseInt(numbers[i]);
+		}
+		return summa;
+		
+			
+		}
+			
 }
