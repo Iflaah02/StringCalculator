@@ -14,7 +14,7 @@ public class StringCalculator {
 		
 		return result;
 	}
-		
+	//I would normally make all these methods private, but they are public here so I can test each one indicidually.
 	public ArrayList<Integer> getArrayInteger(String str) throws StringCalculatorException {
 		//check the length of string is not 0
 		if (str.length() == 0 ) {
