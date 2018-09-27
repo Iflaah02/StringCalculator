@@ -1,5 +1,5 @@
 public class StringCalculator {
-	public int add(String numbersStr) {
+	public int add(String numbersStr) throws StringCalculatorException {
 		// Returns the sum of the numbers given in numbersStr
 		String[] strings = splitString(numbersStr);
 		int[] parsedNumbers = parseAndValidateStrings(strings);
@@ -39,11 +39,23 @@ public class StringCalculator {
 		return count;
 	}
 	
-	public int[] parseAndValidateStrings(String[] numberStrings) {
+	public int[] parseAndValidateStrings(String[] numberStrings) throws StringCalculatorException {
 		int[] parsedNumbers = new int[numberStrings.length];
 		
 		for (int i = 0; i < numberStrings.length; i++) {
-			parsedNumbers[i] = Integer.parseInt(numberStrings[i]);
+			try {
+				String stringToParse = numberStrings[i];
+				int parsed = Integer.parseInt(stringToParse);
+				
+				if (parsed < 0) {
+					// Negative numbers not allowed
+					throw new StringCalculatorException();
+				}
+				
+				parsedNumbers[i] = parsed;
+			} catch (NumberFormatException e) {  
+				throw new StringCalculatorException();
+			}  
 		}
 		
 		return parsedNumbers;
