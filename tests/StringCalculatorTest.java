@@ -84,7 +84,7 @@ public class StringCalculatorTest {
 	public void test_parseStringsToIntegers_emptyList() {
 		StringCalculator calc = new StringCalculator();
 		String[] strings = new String[0];
-		int[] result = calc.parseStringsToIntegers(strings);
+		int[] result = calc.parseAndValidateStrings(strings);
 		assertEquals(0, result.length);
 	}
 	
@@ -92,9 +92,70 @@ public class StringCalculatorTest {
 	public void test_parseStringsToIntegers_parsesIntegersCorrectly() {
 		StringCalculator calc = new StringCalculator();
 		String[] strings = {"10", "25", "3"};
-		int[] result = calc.parseStringsToIntegers(strings);
+		int[] result = calc.parseAndValidateStrings(strings);
 		assertEquals(10, result[0]);
 		assertEquals(25, result[1]);
 		assertEquals(3, result[2]);
 	}
+	
+	// Requirement 3:
+	@Test
+	public void test_countSeparatorSymbols_emptyStringReturnsZero() {
+		StringCalculator calc = new StringCalculator();
+		int result = calc.countSeparatorSymbols("");
+		assertEquals(0, result);
+	}
+
+	@Test
+	public void test_countSeparatorSymbols_countsNumberOrCommas() {
+		StringCalculator calc = new StringCalculator();
+		int result = calc.countSeparatorSymbols("1,2,3");
+		assertEquals(2, result);
+	}
+	
+	@Test
+	public void test_countSeparatorSymbols_countsNumberOrNewlines() {
+		StringCalculator calc = new StringCalculator();
+		int result = calc.countSeparatorSymbols("1\n2\n3\n4");
+		assertEquals(3, result);
+	}
+	
+	@Test
+	public void test_countSeparatorSymbols_countsNumberOrMixed() {
+		StringCalculator calc = new StringCalculator();
+		int result = calc.countSeparatorSymbols("1,2\n3\n4,5");
+		assertEquals(4, result);
+	}
+	
+	@Test
+	public void test_countSeparatorSymbols_randomData() {
+		StringCalculator calc = new StringCalculator();
+		int result = calc.countSeparatorSymbols(",g,\nq,h4,u2,je,,\n");
+		assertEquals(9, result);
+	}
+	
+	@Test
+	public void test_splitString_emptyStringReturnsEmptyArray() {
+		StringCalculator calc = new StringCalculator();
+		String[] result = calc.splitString("");
+		assertEquals(0, result.length);
+	}
+	
+	@Test
+	public void test_splitString_splitsByBothSeparators() {
+		StringCalculator calc = new StringCalculator();
+		String[] result = calc.splitString("10,20\n30");
+		assertEquals(3, result.length);
+		assertEquals("10", result[0]);
+		assertEquals("20", result[1]);
+		assertEquals("30", result[2]);
+	}
+	
+	@Test (expected = Exception.class)
+	public void test_add_InvalidDataThrows() {
+		StringCalculator calc = new StringCalculator();
+		calc.add("1234\n,");
+	}
 }
+
+
