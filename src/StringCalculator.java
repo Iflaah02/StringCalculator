@@ -2,8 +2,8 @@ import java.util.Arrays;
 import java.util.List;
 
 public class StringCalculator {
-	String rex = "[,\n][,\n]";
-	
+    String rex = ".*[,\n][,\n].*";
+
 	public boolean checkNumbersLength(List<String> numbers) {
 		if (numbers.size() > 2) {
 			return false;
@@ -12,6 +12,7 @@ public class StringCalculator {
 	}
 	
 	public List<String> handleNewlineComma(String numbersStr) throws StringCalculatorException {
+		
 		if (numbersStr.matches(rex)) {
 			throw new StringCalculatorException();
 		}
