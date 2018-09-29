@@ -17,7 +17,7 @@ public class StringCalculator {
 	        }
 	    }
 	    if (negativeNumbers.size() > 0) {
-	        throw new RuntimeException("Negative Numbers not allowed: " + negativeNumbers.toString());
+	        throw new RuntimeException("Negative Numbers are not allowed: " + negativeNumbers.toString());
 	    }
 	    return returnValue;     
 	}
