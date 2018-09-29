@@ -1,9 +1,27 @@
+import java.util.ArrayList;
+import java.util.List;
 
 public class StringCalculator {
-	public int add(String numbersStr) {
-		// Returns the sum of the numbers given in numbersStr
-		
-		// not yet implemented
-		return 0;
+	
+	public static int add(final String numbers) {
+	    int returnValue = 0;
+	    String[] numbersArray = numbers.split(",|n");;
+	    List negativeNumbers = new ArrayList();
+	    for (String number : numbersArray) {
+	        if (!number.trim().isEmpty()) {
+	            int numberInt = Integer.parseInt(number.trim());
+	            if (numberInt < 0) {
+	                negativeNumbers.add(numberInt);
+	            }
+	            returnValue += numberInt;
+	        }
+	    }
+	    if (negativeNumbers.size() > 0) {
+	        throw new RuntimeException("Negative Numbers not allowed: " + negativeNumbers.toString());
+	    }
+	    return returnValue;     
 	}
 }
+
+
+
