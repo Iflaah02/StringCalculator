@@ -12,7 +12,7 @@ public class StringCalculatorTest {
     //when 2 numbers are input (Success case)
     @Test
     public final void whenTwoNumbersAreInputThenNoExceptionIsThrown() {
-        StringCalculator.add("4,5");
+        StringCalculator.add("4,10");
         Assert.assertTrue(true);
     }
     //when non number is input (Failure case)
