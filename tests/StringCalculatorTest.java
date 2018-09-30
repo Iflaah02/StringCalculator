@@ -79,4 +79,13 @@ public class StringCalculatorTest {
 	// Assert
 	assertEquals("No empty string", 13, result);
 	}
+
+	@Test
+	public void test8() throws StringCalculatorException {
+	StringCalculator calc = new StringCalculator();
+
+	int result = calc.numbersNochar("8,5\n6,s,1,g");
+	// Assert
+	assertEquals("No empty string", 20, result);
+	}
 }
