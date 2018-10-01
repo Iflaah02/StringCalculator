@@ -3,50 +3,23 @@ public class StringCalculator {
 	
 	public int add(String numbersStr) 
 	{
-	String one;
-	String two;
-	String three;
-	int numbers = 0;
-	int eka = 0;
-	int toka = 0;
-	int kolmas = 0;
-	int passed = 0;
+	// System.out.println("This is the string : "+numbersStr);
+	numbersStr.replaceAll("\\n", ","); // this should reduce the number of checked characters
+	// System.out.println("This is the string : "+numbersStr); apparently the above line does not function or the feed does not accept \
+	int[] numbertable = find_numbers(numbersStr); 
 	int i = 0;
-	
-	for (i = 0; i < numbersStr.length(); i++)
+	int result = 0;
+	for (i = 0; i<numbertable.length; i++)
 		{
-	    char c = numbersStr.charAt(i); 
-	    passed = cC (c);  // Send this character to rehab for evaluating if it is 0-9 or , or \n
-	    if (passed == 0) System.out.println("Input includes invalid characters. Please give three numbers separated by a comma (,) or a new line");
-	    if (passed == 2 || passed == 4)
-	    	{
-	    	numbers++;
-	    	if (numbers == 1) toka = i;
-	    	if (numbers == 2) kolmas = i;
-	    	if (numbers > 2) System.out.println("Too many numbers in the input");
-	    	}
-	   
-	    
+		result = result + numbertable[i];
 		}
-	one = separate(numbersStr,0,toka);
-	two = separate(numbersStr,toka+1,kolmas);
-	three = separate(numbersStr,kolmas+1,numbersStr.length());
+ 
 	
-	System.out.println(one + " " + two + " " + three);
 	
-	eka = cN(one);
-	toka = cN(two);
-	kolmas = cN(three);
-	
-	if (passed > 0) return eka+toka+kolmas;
-		
-		// Returns the sum of the numbers given in numbersStr
-		
-		// not yet implemented
-	else return 0;
+	return result;
 	}
 	
-	public int cN (String a) // cN = CheckNumber wtf was I planning to with this?
+	public int cN (String a) // cN = ChangeNumber 
 	{
 	return Integer.parseInt(a);	
 	}
@@ -54,18 +27,66 @@ public class StringCalculator {
 	// this checks only if a character is a digit or one of the three other allowed figures
 	public int cC (char a)
 	{
-	if (Character.isDigit(a)) return 1;
-	if (a == ',') return 2;
-	if (a == '\\') return 3;
+	// was used to test why system failed : System.out.println("character is " +a);	
+	if (Character.isDigit(a)) return 1; 
+	// became obsolete with the split - command if (a == ',') return 2;
+	/* these two might become obsolete when string "\n" can be replaced with "," leaving them in code
+	to remind me in similar selections in future programs
+	if (a == '\\') return 3; 
 	if (a == 'n') return 4;		
+	*/
 	return 0;
 	
 	}
-	
+	// completely useless after finding out about split - command for strings
 	public String separate (String a, int x, int y) //
 	{
 	return a.substring(x, y);	
 	}	
+
+	public int[] find_numbers(String numbersStr) 
+	{
+	System.out.println("Stringi on "+ numbersStr);	
+	String luvut[] = toStrings(numbersStr); // new String[3]; // Finnish for numbers[]
+	int numbers = luvut.length;
+	int brakes[] = new int[numbers]; // used to store the ints changed from strings.
+	int i, j;
+	for (i=0; i<numbers; i++) brakes[i]=0;
+	int passed = 0;
+	
+	char c;
+	int digits = 0;
+	
+	for (j = 0; j<numbers; j++)
+		{
+		for (i=0; i<luvut[j].length(); i++)
+			{
+			c = luvut[j].charAt(i);
+			passed = cC(c); // character sent for inspection
+			if (passed == 1) digits++;
+			}
+		if (digits == luvut[j].length())
+			{
+			brakes[j] = cN(luvut[j]);
+			System.out.println("number [j] " + j + " as letters " + luvut[j] + " and as a number " + brakes[j] );
+			}
+		else System.out.println("Feed has invalid characters and cannot be calculated");
+		
+		digits=0;
+		}
+	
+	
+	return brakes;	
+	}
+	
+	public String[] toStrings (String numbersStr )
+	// changes the string to multiple strings based on the location on ","
+	{
+	String [] feedback = numbersStr.split(",");
+		
+	return feedback;
+	
+	}
 	
 }
 
