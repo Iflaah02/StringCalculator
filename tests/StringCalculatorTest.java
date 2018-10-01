@@ -38,4 +38,9 @@ public class StringCalculatorTest {
     public void testinvalidinput() throws StringCalculatorException {
     	assertEquals(6, StringCalculator.Add("1,ss,tt"));
     }
+	
+	@Test (expected = StringCalculatorException.class)
+    public void testinvalidinput2() throws StringCalculatorException {
+    	assertEquals(6, StringCalculator.Add("1,,\n"));
+    }
 }

@@ -15,6 +15,8 @@ public class StringCalculator {
 		}
 		else if(text.contains("-"))
 			throw new StringCalculatorException();
+		else if(text.contains(",,"))
+			throw new StringCalculatorException();
 		else if(text.contains(",")){
 			return sum(splitNumbers(text));	
 		}
