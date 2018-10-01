@@ -3,21 +3,25 @@ public class StringCalculator {
 	
 	
 	public int add(String numbersStr) {
-		// Returns the sum of the numbers given in numbersStr
+		
 		boolean lengthCheck = checkLength(numbersStr);
+		
 		int sum = 0;
-		if (lengthCheck = true) {
-			String[] strArray = numbersStr.split(",|\\\n");
-			int[] intArray = new int[strArray.length];
-			for(int i = 0; i < strArray.length; i++) {
-			    intArray[i] = Integer.parseInt(strArray[i]);
-			}
-			
-			for (int j = 0; j < strArray.length; j++ ) {
-				sum = sum + intArray[j];
+		if (lengthCheck == true) {
+			boolean inputCheck = checkInput(numbersStr);
+			if (inputCheck == true) {
+				String[] strArray = numbersStr.split(",|\\\n");
+				int[] intArray = new int[strArray.length];
+				for(int i = 0; i < strArray.length; i++) {
+				    intArray[i] = Integer.parseInt(strArray[i]);
+				}
+				
+				for (int j = 0; j < strArray.length; j++ ) {
+					sum = sum + intArray[j];
+				}
 			}
 		} 
-		// not yet implemented
+		
 		return sum;
 	}
 	
@@ -30,10 +34,10 @@ public class StringCalculator {
 			String[] strArray = numbersStr.split(",|\\\n");
 			int[] intArray = new int[strArray.length];
 			for(int i = 0; i < strArray.length; i++) {
+				if (i > 1) {
+					return false;
+				}
 			    intArray[i] = Integer.parseInt(strArray[i]);
-			}
-			if (strArray.length > 1) {
-				return false;
 			}
 		}
 		return true;
