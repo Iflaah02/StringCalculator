@@ -28,17 +28,13 @@ public class StringCalculator {
 			}
 
 			List<String> numbersList = Arrays.asList(numbersStr.split(",")); // Assign the expected numbers to an array
+            numbersList.forEach((currentItem) -> {
+                if(!currentItem.isEmpty()) {
+                    sum[0] = sum[0] + Integer.parseInt(currentItem);
+                }
+            });
+            return sum[0]; // Return the sum of the items
 
-			try {
-				numbersList.forEach((currentItem) -> {
-					if(!currentItem.isEmpty()) {
-						sum[0] = sum[0] + Integer.parseInt(currentItem);
-					}
-				});
-				return sum[0]; // Return the sum of the items
-			} catch (NumberFormatException e) {
-				throw new StringCalculatorException(); // Throw an error on invalid characters.
-			}
 		} else {
 			return sum[0]; // Return 0 for null or empty string
 		}
