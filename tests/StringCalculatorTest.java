@@ -78,9 +78,27 @@ public class StringCalculatorTest {
 	}
 	
 	@Test
-	public void test_check_count_false() {
+	public void test_false_value() {
+		ValuesHandler vh = new ValuesHandler();
+		assertEquals(vh.checkStringValue("a"), false);
+	}
+	
+	@Test
+	public void test_true_value() {
+		ValuesHandler vh = new ValuesHandler();
+		assertEquals(vh.checkStringValue("4"), true);
+	}
+	
+	@Test
+	public void test_check_empty_value_true() {
 		StringCalculator sc = new StringCalculator();
-		assertEquals(sc.checkCount("3"),false);
+		assertEquals(sc.checkEmptyString("4"), "1");
+	}
+	
+	@Test
+	public void test_check_empty_value_false() {
+		StringCalculator sc = new StringCalculator();
+		assertEquals(sc.checkEmptyString(""), "0");
 	}
 
 }

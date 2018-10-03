@@ -1,48 +1,38 @@
-import java.util.ArrayList;
-
 public class StringCalculator {
-	public boolean tooManyNumbers;
-	public int count = 0;
-	public int sum = 0;
-	ArrayList<String> strsArr = new ArrayList();
-	ArrayList<Integer> numsArr = new ArrayList();
-	StringCalculatorTest tests = new StringCalculatorTest();
-	
-	public static void main(String[] args) {
-		StringCalculator sc = new StringCalculator();
-	}
+	private ValuesHandler vh;
+	ValuesHandler valuesHandler = new ValuesHandler();
 	
 	public int add(String numbersStr) {
 		splitNumbers(numbersStr);
-		for (String i : strsArr) {
-			numsArr.add(Integer.parseInt(i));
-		}
-		for (int num : numsArr) {
-			sum += num;
-		}
-		return sum;
+		vh = this.valuesHandler;
+		vh.execute();
+		return vh.sum;
 	}
-	
 	
 	public void splitNumbers(String numbers) {
+		vh = this.valuesHandler;
 		for (String s : numbers.split(",|\\n")) {
-			if (s == "") {
+			if (checkEmptyString(s) == "0") {
 				break;
-			}
-			else {
-				checkCount(s);
+			} else {
+				if (vh.checkStringValue(s) == true) {
+					vh.checkCount(s);
+				}
+				else {
+					System.out.println("Check value!");
+					System.exit(0);
+				}
 			}
 		}
+		
 	}
 	
-	public boolean checkCount(String s) {
-		count++;
-		if (count < 4) {
-			strsArr.add(s);
-			return false;
+	public String checkEmptyString(String s) {
+		if (s == "") {
+			return "0";
 		}
 		else {
-			return true;
+			return "1";
 		}
 	}
 	
