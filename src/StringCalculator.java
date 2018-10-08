@@ -1,7 +1,7 @@
 import java.util.Arrays;
 import java.util.List;
 
-public class StringCalculator {
+class StringCalculator {
 
 	/**
 	 * add(String numbersStr)
@@ -11,7 +11,7 @@ public class StringCalculator {
 	 * @param numbersStr - The numbers in a string
 	 * @return The sum of the numbers
 	 */
-	public int add(String numbersStr) throws StringCalculatorException {
+	int add(String numbersStr) throws StringCalculatorException {
 
 		final int[] sum = {0};
 		String regex = "[0-9, /,]+";
@@ -33,10 +33,9 @@ public class StringCalculator {
                     sum[0] = sum[0] + Integer.parseInt(currentItem);
                 }
             });
-            return sum[0]; // Return the sum of the items
 
-		} else {
-			return sum[0]; // Return 0 for null or empty string
 		}
+
+		return sum[0]; // Return the sum of the items
 	}
 }
