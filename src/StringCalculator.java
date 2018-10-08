@@ -17,7 +17,7 @@ class StringCalculator {
 		String regex = "[0-9, /,]+";
 
 		// Check that the string is not null or empty
-		if (numbersStr != null && !numbersStr.isEmpty()) {
+		if (isStringNotNullAndNotEmpty(numbersStr)) {
 
 			// Replace whitespace with comma
 			numbersStr = numbersStr.replaceAll("\\s", ",");
@@ -33,9 +33,20 @@ class StringCalculator {
                     sum[0] = sum[0] + Integer.parseInt(currentItem);
                 }
             });
-
 		}
 
 		return sum[0]; // Return the sum of the items
 	}
+
+    /**
+     * private boolean isStringNotNullAndNotEmpty
+     * Checks if the given String is null or empty. The null check is performed first to ensure no NPE is thrown.
+     *
+     * @param stringToBeChecked - The String that needs to be checked
+     * @return true/false depending on if the String was null/empty or not
+     */
+	private boolean isStringNotNullAndNotEmpty(String stringToBeChecked) {
+	    return (stringToBeChecked != null && !stringToBeChecked.isEmpty());
+    }
+
 }

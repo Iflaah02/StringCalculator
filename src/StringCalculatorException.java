@@ -1,4 +1,4 @@
 
-public class StringCalculatorException extends Exception {
+class StringCalculatorException extends Exception {
 
 }
