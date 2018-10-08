@@ -2,6 +2,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class StringCalculator {
+	// extract class
     private StringCalculatorData data = new StringCalculatorData(".*[,\n][,\n].*");
 
 	public boolean checkNumbersLength(CheckNumbersLengthParameter parameterObject) {
@@ -27,6 +28,7 @@ public class StringCalculator {
 		
 		List<String> numbers = handleNewlineComma(numbersStr);
 		
+		// Introduce parameter object
 		if (!checkNumbersLength(new CheckNumbersLengthParameter(numbers))) {
 			return 0;
 		}
@@ -50,6 +52,7 @@ public class StringCalculator {
 		return sum;
 	}
 
+	// encapsulate field
 	String getRex() {
 		return data.rex;
 	}
