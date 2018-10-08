@@ -1,9 +1,3 @@
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
-
 /*
 Implement a simple String calculator with a method int Add(string numbers)
 1. The method can take 0, 1 or 2 numbers, and will return their sum (for an empty string it will
@@ -20,39 +14,19 @@ public class StringCalculator {
 	// Main function
 	public int add(String numbersStr) throws StringCalculatorException {
 		
+		NumberObject numberObject = new NumberObject(numbersStr);
+		CalculateMethod calculator = new CalculateMethod();
+		
 		int val = 0;
-		if (numbersStr != null && numbersStr != "") {			
-			try {
-				// Remove the "" from the list
-				String[] numbersArray = convertToNumberStringArray(numbersStr);
-				numbersArray = removeEmptyStrings(numbersArray);
-			
-				for (String numberString : numbersArray) {
-					val += Integer.parseInt(numberString);
-				}
-			}
-			catch (IllegalArgumentException e) {
-				throw new StringCalculatorException();
-			}
+		if (isNumberStrValid(numberObject)) {			
+			val = calculator.calculate(numberObject);
 		}
 		return val;
 	}
 	
-	// Beautify this class and handle errors
-	public String[] convertToNumberStringArray(String numbers) {
-		
-		String[] arrayOfNumbers = numbers.split("\\s*,\\s*"); 
-	
-		return arrayOfNumbers;
+	// Refactor: Consolidate conditionals && Preserve Whole Object
+	public boolean isNumberStrValid(NumberObject numberObject) {
+		return numberObject.getNumbersStr() != null && numberObject.getNumbersStr() != "";
 	}
-	
-	public String[] removeEmptyStrings(String[] numbersArray) {
-		
-		List<String> myList = new ArrayList<String>(Arrays.asList(numbersArray));
-		myList.remove("");
-		
-		String[] myStrArray = myList.toArray(new String[0]);
-		
-		return myStrArray;
-	}
+
 }

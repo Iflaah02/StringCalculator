@@ -50,7 +50,7 @@ public class StringCalculatorTest {
 		String testString = " ";
 		
 		// Act
-		int returnedValue = calculator.add(testString);
+		calculator.add(testString);
 	}
 
 	@Test
@@ -68,11 +68,10 @@ public class StringCalculatorTest {
 	@Test
 	public void test_removeEmptyString() {
 		// Arrange
-		StringCalculator calculator = new StringCalculator();
 		String[] testArray = {"21", "1", "", "15"};
 		
 		// Act
-		String[] returnedArray = calculator.removeEmptyStrings(testArray);
+		String[] returnedArray = CalculatorUtils.removeEmptyStrings(testArray);
 		
 		// Assert
 		String[] expectedArray = {"21", "1", "15"};
@@ -82,11 +81,10 @@ public class StringCalculatorTest {
 	@Test
 	public void test_convertToArray() {
 		// Arrange
-		StringCalculator calculator = new StringCalculator();
 		String testString = "1,15\n , ,3";
 		
 		// Act
-		String[] returnedArray = calculator.convertToNumberStringArray(testString);
+		String[] returnedArray = CalculatorUtils.convertToNumberStringArray(testString);
 		
 		// Assert
 		String[] expectedArray = {"1", "15", "", "3"};
