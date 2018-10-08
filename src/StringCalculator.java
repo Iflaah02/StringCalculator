@@ -14,20 +14,12 @@ class StringCalculator {
 	int add(String numbersStr) throws StringCalculatorException {
 
 		final int[] sum = {0};
-		String regex = "[0-9, /,]+";
 
 		// Check that the string is not null or empty
 		if (isStringNotNullAndNotEmpty(numbersStr)) {
+		    String preparedStr = prepareStringForCalculation(numbersStr); // Prepare the string for calculation
 
-			// Replace whitespace with comma
-			numbersStr = numbersStr.replaceAll("\\s", ",");
-
-			// Abort execution if string contains characters other than numbers [0-9] or comma [/,].
-			if (!numbersStr.matches(regex)) {
-				throw new StringCalculatorException();
-			}
-
-			List<String> numbersList = Arrays.asList(numbersStr.split(",")); // Assign the expected numbers to an array
+			List<String> numbersList = Arrays.asList(preparedStr.split(",")); // Assign the expected numbers to an array
             numbersList.forEach((currentItem) -> {
                 if(!currentItem.isEmpty()) {
                     sum[0] = sum[0] + Integer.parseInt(currentItem);
@@ -47,6 +39,28 @@ class StringCalculator {
      */
 	private boolean isStringNotNullAndNotEmpty(String stringToBeChecked) {
 	    return (stringToBeChecked != null && !stringToBeChecked.isEmpty());
+    }
+
+    /**
+     * private String prepareStringForCalculation
+     * Prepares the user input for calculation.
+     *
+     * @param originalStr - The original String that needs to be prepared
+     * @return preparedStr - The prepared String
+     * @throws StringCalculatorException - Throw if the regex doesn't match
+     */
+    private String prepareStringForCalculation(String originalStr) throws StringCalculatorException{
+        String regex = "[0-9, /,]+"; //The regex that the check will be performed against
+
+        // Replace whitespace with comma
+        String preparedStr = originalStr.replaceAll("\\s", ",");
+
+        // Abort execution if string contains characters other than numbers [0-9] or comma [/,].
+        if (!preparedStr.matches(regex)) {
+            throw new StringCalculatorException();
+        }
+
+	    return preparedStr;
     }
 
 }
