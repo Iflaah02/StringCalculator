@@ -31,4 +31,29 @@ public class NumberObject {
 		this.value = value;
 	}
 
+	// Refactor: BAD SMELL, JDEADORANT MOVED
+	public boolean isNumberStrValid() {
+		return getNumbersStr() != null && getNumbersStr() != "";
+	}
+
+	// Refactor: Extract method
+	// Refactor: BAD SMELL, JDEADORANT MOVED
+	public int calculate() throws StringCalculatorException {
+		try {
+			// Remove the "" from the list
+			setNumbersArray(CalculatorUtils.convertToNumberStringArray(getNumbersStr()));
+			setNumbersArray(CalculatorUtils.removeEmptyStrings(getNumbersArray()));
+			
+			int val = 0;
+			for (String numberString : getNumbersArray()) {
+				val += Integer.parseInt(numberString);
+			}
+			setValue(val);
+		}
+		catch (IllegalArgumentException e) {
+			throw new StringCalculatorException();
+		}
+		return getValue();
+	}
+
 }

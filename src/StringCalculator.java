@@ -15,18 +15,12 @@ public class StringCalculator {
 	public int add(String numbersStr) throws StringCalculatorException {
 		
 		NumberObject numberObject = new NumberObject(numbersStr);
-		CalculateMethod calculator = new CalculateMethod();
-		
+
 		int val = 0;
-		if (isNumberStrValid(numberObject)) {			
-			val = calculator.calculate(numberObject);
+		if (numberObject.isNumberStrValid()) {			
+			val = numberObject.calculate();
 		}
 		return val;
-	}
-	
-	// Refactor: Consolidate conditionals && Preserve Whole Object
-	public boolean isNumberStrValid(NumberObject numberObject) {
-		return numberObject.getNumbersStr() != null && numberObject.getNumbersStr() != "";
 	}
 
 }
