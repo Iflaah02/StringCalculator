@@ -2,10 +2,10 @@ import java.util.Arrays;
 import java.util.List;
 
 public class StringCalculator {
-    String rex = ".*[,\n][,\n].*";
+    private StringCalculatorData data = new StringCalculatorData(".*[,\n][,\n].*");
 
-	public boolean checkNumbersLength(List<String> numbers) {
-		if (numbers.size() > 2) {
+	public boolean checkNumbersLength(CheckNumbersLengthParameter parameterObject) {
+		if (parameterObject.numbers.size() > 2) {
 			return false;
 		}
 		return true;
@@ -13,7 +13,7 @@ public class StringCalculator {
 	
 	public List<String> handleNewlineComma(String numbersStr) throws StringCalculatorException {
 		
-		if (numbersStr.matches(rex)) {
+		if (numbersStr.matches(getRex())) {
 			throw new StringCalculatorException();
 		}
 		return Arrays.asList(numbersStr.split(",|\n"));
@@ -27,7 +27,7 @@ public class StringCalculator {
 		
 		List<String> numbers = handleNewlineComma(numbersStr);
 		
-		if (!checkNumbersLength(numbers)) {
+		if (!checkNumbersLength(new CheckNumbersLengthParameter(numbers))) {
 			return 0;
 		}
 
@@ -48,5 +48,13 @@ public class StringCalculator {
 		
 		
 		return sum;
+	}
+
+	String getRex() {
+		return data.rex;
+	}
+
+	void setRex(String rex) {
+		this.data.rex = rex;
 	}
 }

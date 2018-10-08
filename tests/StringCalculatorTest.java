@@ -11,14 +11,14 @@ public class StringCalculatorTest {
 	public void testCheckNumbersLength_happypath1() {
 		StringCalculator stringCalculator = new StringCalculator();
 		List<String> list = Arrays.asList("1", "2");
-		assertTrue(stringCalculator.checkNumbersLength(list));
+		assertTrue(stringCalculator.checkNumbersLength(new CheckNumbersLengthParameter(list)));
 	}
 
 	@Test
 	public void testCheckNumbersLength_tooManyNumbers() {
 		StringCalculator stringCalculator = new StringCalculator();
 		List<String> list = Arrays.asList("1", "2", "3");
-		assertFalse(stringCalculator.checkNumbersLength(list));
+		assertFalse(stringCalculator.checkNumbersLength(new CheckNumbersLengthParameter(list)));
 	}
 
 	@Test
